@@ -1,1 +1,1 @@
-# mlcs_el_ni-o_analysis
+# mlcs_el_nino_analysis

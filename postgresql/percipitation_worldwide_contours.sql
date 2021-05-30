@@ -95,7 +95,8 @@ FROM (SELECT o.longditude,
 
 --\copy period_1979_1988_countours TO 'C:/Users/Alexej/Desktop/Bachelorarbeit/period_1979_1988_countours.csv' DELIMITER ';' CSV HEADER;
 
---Identifying all the points encapsulated by the big blue shape with the help of recursion 
+--Identifying all the points encapsulated by the big blue shape with the help of recursion
+--Picking a grid point here laditude = 1.25 and longditude = 126.25 that is blue in each window frame
 
 DROP TABLE IF EXISTS blues;
 
@@ -124,8 +125,8 @@ FROM(
 SELECT p.longditude,p.laditude, 0 as correlation
 FROM period_1979_1988_countours as p
 WHERE NOT EXISTS (SELECT * FROM shapes as s WHERE p.longditude=s.longditude AND 
-												  p.laditude=s.laditude 	AND
-												  p.correlation=s.correlation)
+						  p.laditude=s.laditude     AND
+						  p.correlation=s.correlation)
 UNION
 SELECT * FROM shapes as s) as temp 
 ORDER BY temp.laditude ASC,temp.longditude ASC;
@@ -133,7 +134,7 @@ ORDER BY temp.laditude ASC,temp.longditude ASC;
 
 --\copy blues TO 'C:/Users/Alexej/Desktop/blues.csv' DELIMITER ';' CSV HEADER;
 
---Calculation of the area of ​​each grid point depending on its location with the great circle distance method.
+--Calculation of the area of each blue grid point depending on its location with the great circle distance method.
 
 SELECT *, horizontal_distance*vertical_distance as "square_miles"
 FROM blues as b,
@@ -141,7 +142,7 @@ FROM blues as b,
 	 LATERAL (SELECT 2*(point(b.longditude,b.laditude)<@>point(b.longditude,b.laditude+1.25)) as vertical_distance) vertical_distance
 WHERE b.correlation = -1;
 
---Adding up each area point to calculate the total area of ​​the blue structure.
+--Adding up each area point to calculate the total area of the blue structure.
 
 SELECT sum(square_miles) as "total area in square miles"
 FROM (
@@ -150,3 +151,41 @@ FROM blues as b,
 	 LATERAL (SELECT 2*(point(b.longditude,b.laditude)<@>point(b.longditude+1.25,b.laditude)) as horizontal_distance) horizontal_distance, 
 	 LATERAL (SELECT 2*(point(b.longditude,b.laditude)<@>point(b.longditude,b.laditude+1.25)) as vertical_distance) vertical_distance
 WHERE b.correlation = -1) as s;
+
+DROP TABLE IF EXISTS reds;
+
+--Identifying all the points encapsulated by the red shape with the help of recursion
+--Picking a grid point here laditude = 1.25 and longditude = 201.25 that is red in each window frame
+
+CREATE TABLE reds (longditude,laditude,correlation) as 
+WITH RECURSIVE shapes2 (longditude,laditude,correlation) as (
+		SELECT * 
+		FROM period_1979_1988_countours as p 
+		WHERE p.laditude = 1.25 AND p.longditude = 201.25
+	UNION 
+		SELECT p.longditude,p.laditude,p.correlation
+		FROM (SELECT * FROM period_1979_1988_countours as temp WHERE temp.correlation = 1) as p, shapes2 as s 
+		WHERE (s.laditude+2.5=p.laditude AND s.longditude+2.5=p.longditude AND p.correlation = 1) OR 
+			  (s.laditude+2.5=p.laditude AND s.longditude-2.5=p.longditude AND p.correlation = 1) OR 
+			  (s.laditude-2.5=p.laditude AND s.longditude-2.5=p.longditude AND p.correlation = 1) OR 
+			  (s.laditude-2.5=p.laditude AND s.longditude+2.5=p.longditude AND p.correlation = 1) OR
+			  (s.laditude+2.5=p.laditude AND s.longditude=p.longditude     AND p.correlation = 1) OR
+			  (s.laditude-2.5=p.laditude AND s.longditude=p.longditude     AND p.correlation = 1) OR
+		      (s.longditude+2.5=p.longditude AND s.laditude=p.laditude     AND p.correlation = 1) OR
+		      (s.longditude-2.5=p.longditude AND s.laditude=p.laditude	   AND p.correlation = 1)
+)
+
+--Connecting all the identified points to the world map
+
+
+--\copy reds TO 'C:/Users/Alexej/Desktop/reds.csv' DELIMITER ';' CSV HEADER;
+
+--Calculation of the area of each red grid point depending on its location with the great circle distance method.
+
+SELECT sum(square_miles) as "total area in square miles"
+FROM (
+SELECT *, horizontal_distance*vertical_distance as "square_miles"
+FROM reds as r,
+	 LATERAL (SELECT 2*(point(r.longditude,r.laditude)<@>point(r.longditude+1.25,r.laditude)) as horizontal_distance) horizontal_distance, 
+	 LATERAL (SELECT 2*(point(r.longditude,r.laditude)<@>point(r.longditude,r.laditude+1.25)) as vertical_distance) vertical_distance
+WHERE r.correlation = 1) as s;

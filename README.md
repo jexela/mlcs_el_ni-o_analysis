@@ -1,7 +1,7 @@
 <!-- Title -->
 ## Evolution of ENSO Precipitation Teleconnections
 <!-- Description -->
-This repository contains the code and data used in my Bachelor's thesis titled "Evolution of ENSO Precipitation Teleconnections: A Causal Discovery Approach". The thesis was submitted on 3rd March 2022 and was part of the Independent Research Group "Machine Learning in Climate Sciences" (MLCS) at the Excellence Cluster "Machine Learning" in Tübingen. The thesis is structured like a scientific paper and can be found at the following link: [Bachelor's Thesis PDF](https://machineclimate.de/files/bachelors_thesis.pdf)
+This repository contains the code and data used in my Bachelor's thesis titled "Evolution of ENSO Precipitation Teleconnections: A Causal Discovery Approach". The thesis was submitted on 3rd March 2022 and was part of the Independent Research Group "Machine Learning in Climate Sciences" (MLCS) at the Excellence Cluster "Machine Learning" in Tübingen. The thesis is structured like a scientific paper and can be found at the following link: [Bachelor's Thesis PDF](https://machineclimate.de/files/bachelors_thesis_onken_alexej.pdf)
 
 <!-- Badges -->
 License: MIT
@@ -21,7 +21,7 @@ The El Niño Southern Oscillation (ENSO) is a paramount climate phenomenon affec
 Our analysis uncovers teleconnection patterns for rainfall and drought across different Niño regions, comparing them to the current knowledge of ENSO, and identifying the evolution of ENSO-specific precipitation patterns. By employing correlation analysis and the PCMCI+CEN approach, we detect stable and less stable regions, as well as comparing the predictive power of distinct Niño regions. The most stable regions include the Maritime Continent & Southwest Pacific and the Central Pacific in the tropics. Furthermore, we observe a decreasing trend in significant ENSO anticorrelation areas, particularly in the Maritime Continent & Southwest Pacific region. PCMCI+CEN results may enhance the comprehension of causal relationships between SST values in the Central Pacific and global precipitation anomalies, especially concerning ENSO diversity. Further research should explore the causal links between Niño regions and areas affected by teleconnections to improve precipitation or drought forecasts during ENSO and better grasp the influence of anthropogenic climate change on the dynamics of ENSO teleconnections.
 
 <!-- Dependencies -->
-##Dependencies
+## Dependencies
 The following Python libraries are required:
 
 netCDF4

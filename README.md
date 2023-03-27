@@ -1,1 +1,2 @@
-# mlcs_el_nino_analysis
+Evolution of ENSO Precipitation Teleconnections
+This repository contains the code and data used in my Bachelor's thesis titled "Evolution of ENSO Precipitation Teleconnections: A Causal Discovery Approach". The thesis was submitted on 3rd March 2022 and was part of the Independent Research Group "Machine Learning in Climate Sciences" (MLCS) at the Excellence Cluster "Machine Learning" in Tübingen. The thesis is structured like a scientific paper and can be found at the following link: Bachelor's Thesis PDF.

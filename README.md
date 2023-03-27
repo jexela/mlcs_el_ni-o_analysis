@@ -8,10 +8,10 @@ License: MIT
 
 <!-- Table of Contents -->
 ## Table of Contents
-Abstract
-Conclusion
-Dependencies
-License
+- Abstract
+- Conclusion
+- Dependencies
+- License
 <!-- Abstract -->
 ## Abstract
 The El Niño Southern Oscillation (ENSO) is a paramount climate phenomenon affecting global precipitation patterns due to aperiodic changes in ocean currents and sea surface temperatures (SSTs) in the equatorial Pacific Ocean. To scrutinize the global impact of ENSO on rainfall and establish cause-effect relationships, we employ the PCMCI+CEN causal discovery approach alongside standard correlation analysis. By disentangling confounding effects of different Niño regions, we discern causal relationships with lags up to 12 months, elucidating the distinct impacts of individual Niño regions. Additionally, we investigate trends in spatial correlation fields between the Oceanic Niño Index (ONI) and global precipitation anomalies. Our findings reveal that although various El Niño SST indices exhibit strong intercorrelations, regions manifesting unique ENSO event characteristics can be identified. The study's outcomes contribute to understanding driving forces as univariate time series affecting regional climates and evaluating the role of anthropogenic climate change in global teleconnections' alterations over recent years or decades. The analysis also highlights the importance of considering ENSO diversity for improved precipitation forecasts and better understanding of regional climate impacts.
@@ -24,16 +24,16 @@ Our analysis uncovers teleconnection patterns for rainfall and drought across di
 ## Dependencies
 The following Python libraries are required:
 
-netCDF4
-numpy
-pandas
-matplotlib
-mpl_toolkits.basemap
-scipy
-sklearn
-tigramite
-Additionally, Relational Database Management System (RMBDS) PostgreSQL is used in this project.
+- netCDF4
+- numpy
+- pandas
+- matplotlib
+- mpl_toolkits.basemap
+- scipy
+- sklearn
+- tigramite
 
+Additionally, Relational Database Management System (RMBDS) PostgreSQL is used in this project.
 The repository also includes PDF plots, which are free to use.
 
 <!-- License -->

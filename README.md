@@ -3,9 +3,6 @@
 <!-- Description -->
 This repository contains the code and data used in my Bachelor's thesis titled "Evolution of ENSO Precipitation Teleconnections: A Causal Discovery Approach". The thesis was submitted on 3rd March 2022 and was part of the Independent Research Group "Machine Learning in Climate Sciences" (MLCS) at the Excellence Cluster "Machine Learning" in Tübingen. The thesis is structured like a scientific paper and can be found at the following link: [Bachelor's Thesis PDF](https://machineclimate.de/files/bachelors_thesis_onken_alexej.pdf)
 
-<!-- Badges -->
-License: MIT
-
 <!-- Table of Contents -->
 ## Table of Contents
 - Abstract
@@ -38,6 +35,6 @@ The repository also includes PDF plots, which are free to use.
 
 <!-- License -->
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details.
 
-The MIT License is a permissive free software license that allows for reuse within proprietary software, provided that all copies of the licensed software include a copy of the MIT License terms. It is widely used and is recognized as a standard license for open-source software.
+This project is licensed under the [GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.en.html). See the [LICENSE](LICENSE) file for details.
+
